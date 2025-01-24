@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Order</title>
+
+    <link rel="stylesheet" href="orderListStyle.css" type="text/css" media="all" />
+
+    <style>
+        
+        #printButton {
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    <!--html2pdf.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+</head>
+<body>
+
+  <!-- PDF Button-->
+    <button id="printButton">Download PDF</button>
+
+    <div id="TicketContent">
+        <div>
+            <div class="py-4">
+              <div class="px-14 py-6">
+
+                <!-- Company Info-->
+                <center>
+                <h1 class = "header">SunFresh Food Service Inc.</h1>
+              </center>
+        
+              <p class = "bold">Phone Number: 412-391-7532</p>
+              <p class = "text-right bold ">Fax Number: 412-391-7995</p>
+        
+              <!-- Header-->
+              <center>
+              <h2 class = "header">Order Ticket</h2>
+            </center>
+        
+             
+         
+            <p class="text-left"> Date: <script src="./js/dates.js"></script>  
+              <br>
+              <center>
+              Pick-Up: Ticket Date: Ticket No: G245M   P.O. #</p>
+          </center>
+        
+            <!-- Email Info -->
+            <p class="text-left">Name: Seaman, Jeffrey</p>
+            <p class="text-left">Address: email@gmail.com</p>
+            <p class="text-left">Cell Phone: 412-555-5555</p>
+         
+        
+                <table class="w-full border-collapse border-spacing-0">
+                  <tbody>
+                    <tr>
+                      <td class="w-full align-top">
+                        <div>
+                        </div>
+                      </td>
+        
+                      <td class="align-top">
+                        <div class="text-sm">
+                          <table class="border-collapse border-spacing-0">
+                            <tbody>
+                              <tr>
+                               
+                                </td>
+                                <td class="pl-4">
+                                  <div>
+        
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+        
+        
+              <!-- Table Headers-->
+              <div class="px-14 py-10 text-sm text-neutral-700">
+                <table class="w-full border-collapse border-spacing-0">
+                  <thead>
+                    <tr>
+                      <td class="border-b-2 border-main pb-3 pl-3 font-bold text-main">#</td>
+                      <td class="border-b-2 border-main pb-3 pl-2 font-bold text-main">Quantity</td>
+                      <td class="border-b-2 border-main pb-3 pl-2 text-right font-bold text-main">Product</td>
+                      <td class="border-b-2 border-main pb-3 pl-2 text-center font-bold text-main">Description</td>
+                      <td class="border-b-2 border-main pb-3 pl-2 text-center font-bold text-main">Unit Cost</td>
+                      <td class="border-b-2 border-main pb-3 pl-2 text-right font-bold text-main">Line Cost</td>
+                      
+        
+                    </tr>
+                  </thead>
+
+                  <!-- Contents -->
+                  <tbody>
+                    <tr>
+                      <td class="border-b py-3 pl-3">1.</td>
+                      <td class="border-b py-3 pl-2">3</td>
+                      <td class="border-b py-3 pl-2 text-right">grz</td>
+                      <td class="border-b py-3 pl-2 text-center">Zinfandel</td>
+                      <td class="border-b py-3 pl-2 text-center">$53</td>
+                      <td class="border-b py-3 pl-2 pr-3 text-right">$636</td>
+                    </tr>
+                    <tr>
+                      <td class="border-b py-3 pl-3">2.</td>
+                      <td class="border-b py-3 pl-2">2</td>
+                      <td class="border-b py-3 pl-2 text-right">brrc</td>
+                      <td class="border-b py-3 pl-2 text-center">Ruby</td>
+                      <td class="border-b py-3 pl-2 text-center">$67</td>
+                      <td class="border-b py-3 pl-2 pr-3 text-right">$134</td>
+                    </tr>
+        
+        
+                    <!-- Display Total-->
+                    <tr>
+                      <td colspan="7">
+        
+                        <table class="w-full border-collapse border-spacing-0">
+                          <tbody>
+                            <tr>
+                              <td class="w-full"></td>
+                              <td>
+                                <table class="w-full border-collapse border-spacing-0">
+                                  <tbody>
+                                    <tr>
+                                      <td class="border-b p-3">
+                                        <div class="whitespace-nowrap text-slate-400">Item Total:</div>
+                                      </td>
+                                      <td class="border-b p-3 text-right">
+                                        <div class="whitespace-nowrap font-bold text-main">$770.00</div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="p-3">
+                                        <div class="whitespace-nowrap text-slate-400">Sales Tax:</div>
+                                      </td>
+                                      <td class="p-3 text-right">
+                                        <div class="whitespace-nowrap font-bold text-main">$0.00</div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="p-3">
+                                        <div class="whitespace-nowrap text-slate-400">Ticket Total:</div>
+                                      </td>
+                                      <td class="p-3 text-right">
+                                        <div class="whitespace-nowrap font-bold text-main">$770.00</div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('printButton').onclick = function() {
+            const element = document.getElementById('TicketContent');
+            
+            //html2pdf options
+            const options = {
+                margin:       1,
+                filename:     `${fileYear}"_"${fileMonth}"_"${fileDate} "TicketOrder"`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { dpi: 192, scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            
+            //Save As PDF
+            html2pdf().from(element).set(options).save();
+        };
+            
+            //Save As PDF
+            html2pdf().from(element).set(options).save();
+      
+    </script>
+
+</body>
+</html>

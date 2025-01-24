@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Inventory</title>
+
+    <!--Local Stylesheets--->
+    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="./stylesheets/style.css" />
+<link rel="stylesheet" href="./stylesheets/shipmenu.css" />
+
+    <style>
+        /* Style the button */
+        #printButton {
+            padding: 10px 20px;
+			background-color: red;
+			color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+<!--Bootstrap-->
+<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+
+<!--<script src="./js/customers/getCustomersByOrderId.js"></script>-->
+
+<!--Script to use the functions needed-->
+<script src="./js/customers/getAddToCustomerOrder.js"></script>
+<script src="./js/customers/script.js"></script>
+
+    <!-- Include the html2pdf.js library (use the CDN for convenience) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+</head>
+<body>
+
+   
+    <button class = "pdf2-button-topright" id="printButton">Download PDF</button>
+
+    <div id="CustomerView">
+        <!--Holds the home button and logout button to end the session if the user wants to-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="home-button">
+      <button class="btn btn-secondary" onclick="window.location.href='index.html'">Home</button>
+      </div>
+      <div class="logout-topright">
+      <button class="btn btn-danger" onclick="logout()">Logout</button>
+      </div>
+      
+      <button class="pdf-button-topright " id="OrderTicket" type = "button" >Export Order Ticket</button>
+
+
+
+    </div>
+    </div>
+
+
+<h1 class="pages-text-center">Customer Orders Screen</h1>
+
+<body>
+
+	
+
+<div class="container">
+	<button type="button" class="collapsible"><center>View Customer Orders</center></button>
+    <div class="content">
+    <div id="table"></div>
+      <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+      <!--Calls js script for obtaining the customers data when the button is pressed-->
+      <script src="JS/getCustomer.js"></script>              
+    </div>    
+</div>    
+</div>
+<br>
+
+<div class="container">
+
+<button type="button" class="collapsible"><center>Modify Customer</center></button>
+<div class="content">
+
+<form class="form">
+
+<!--This is for when the user wants to change the customer order information
+    will prompt the user to enter the new information-->
+  <div class="form-group">
+		<label for="customers_id"><b>Customer ID:</b></label>
+		<input name="customers_id" type="text" class="form-control" placeholder="Enter Customer ID">	  
+	</div>
+
+  <div class="form-group">
+		<label for="firstname"><b>First Name:</b></label>
+		<input name="first_name" type="text" class="form-control" placeholder="Enter First Name">	  
+	</div>
+
+	<div class="form-group">
+		<label for="lastname"><b>Last Name:</b></label>
+		<input name="last_name" type="text" class="form-control" placeholder="Enter Last Name">	  
+	</div>
+
+	<div class="form-group">
+		<label for="phone"><b>Phone Number:</b></label>
+		<input name="mobile_phone" type="number" class="form-control" placeholder="Enter Phone Number">	  
+	</div>
+
+	<div class="form-group">
+		<label for="Email"><b>Email:</b></label>
+		<input name="email" type="email" class="form-control" placeholder="Enter Email">	  
+	</div>
+
+	<!--
+	<div id="items">
+		<div class="form-group">
+			<label for="Item-Name"><b>Item Name:</b></label>
+			<input name="item_name" type="text" class="form-control" placeholder="Enter Item Name">	  
+		</div>
+
+	<div class="form-group">
+		<label for="Item-Code"><b>Item Code:</b></label>
+		<input name="item_code" type="text" class="form-control" placeholder="Enter Item Code">	  
+	</div>
+-->
+	<div class="form-group">
+		<label for="price"><b>Price:</b></label>
+		<input name="price" id="price" type="text" class="form-control"  placeholder="Price">	  
+	</div>
+
+	<div class="form-group">
+		<label for="Quantity"><b>Quantity Ordered:</b></label>
+		<input name="qty" type="number" class="form-control" placeholder="Enter Quantity">	  
+	</div>
+
+	<div class="form-group">
+		<label for="Tax"><b>Tax Exempt:</b></label>
+		<input name="tax_exempt" type="number" class="form-control" placeholder="Enter 0, If Not Exempt">	  
+	</div>
+
+	<div class="form-group">
+		<label for="taxpercent"><b>Tax Percent:</b></label>
+		<input name="taxpercent" id="taxpercent" type="number" class="form-control" placeholder="Tax Percent" >	  
+	</div>
+	<div class="form-group">
+		<label for="totalamt"><b>Item Total:</b></label>
+		<input name="totalamt" id="totalamt" type="number" class="form-control" placeholder=""  >	  
+	</div>
+
+	<!--Presents a dropdown for the status that the user can choose from-->
+	<div class="form-group">
+		<label for="status"><b>Status:</b></label>
+			<select class="form-control" id="status" name="status">
+				<option value="" disabled selected>Make Selection</option>
+				<option value="Shipped">Shipped</option>
+			  	<option value="Received">Received</option>
+			  	<option value="Ordered">Ordered</option>
+				<option value="Delivered">Delivered</option>
+			</select>
+	</div>
+
+	<div class="form-group">
+		<label for="notes"><b>Notes:</b></label>
+		<textarea class="form-control" name="notes" maxlength="2500" rows="3"></textarea>
+	</div>
+
+
+
+
+<!--This is the button that the eventlistener is listening for (putCustomers.js)-->
+<div class="form-group">
+  <button type="submit" class="btn btn-primary btn-lg btn-block">Modify Product</button>
+</div>
+
+
+</form>
+</div>
+
+<br>
+<br>
+<!--Opens the customer order fields for the user or closes it-->
+<button type="button" class="collapsible"><center>Add To Customer Order</center></button>
+<div class="content">
+
+<!--the form for adding a new customer order-->
+<form class="form2">
+	<div id="cocktail"></div>
+	
+    
+    <script src="./js/customers/getOrderId.js"></script>
+	<!--<script src="./js/customers/getCustomersByOrderId.js"></script>-->
+
+
+	
+	<!--each field is saved as a group in the form-->
+	<div class="form-group">
+		<label for="orderid"><b>OrderId:</b></label>
+		<select name="orderid" id="orderid" class="form-control" style="width: 200;"></select>
+	</div>
+
+	<div class="form-group">
+		<label for="firstname"><b>First Name:</b></label>
+		<input name="first_name" id="txtfirstname" type="text" class="form-control" placeholder="Enter First Name">	  
+	</div>
+
+	<div class="form-group">
+		<label for="lastname"><b>Last Name:</b></label>
+		<input name="last_name" id="txtlastname" type="text" class="form-control" placeholder="Enter Last Name">	  
+	</div>
+
+	<div class="form-group">
+		<label for="phone"><b>Phone Number:</b></label>
+		<input name="mobile_phone" id="txtphonenumber" type="number" class="form-control" placeholder="Enter Phone Number">	  
+	</div>
+
+	<div class="form-group">
+		<label for="Email"><b>Email:</b></label>
+		<input name="email" id="txtemail" type="email" class="form-control" placeholder="Enter Email">	  
+	</div>
+
+	<div id="items">
+		<div class="form-group">
+			<label for="Item-Name"><b>Item Name:</b></label>
+			<select name="item_name" id="dropdown" class="form-control" style="width: 200;"></select>
+			<!--<input name="item_name" type="text" class="form-control" placeholder="Enter Item Name">-->	
+			<!---->  
+		</div>
+	<div class="form-group">
+		<label for="description"><b>Description:</b></label>
+		<input name="description" id="description" type="text" class="form-control"  placeholder="Enter Description" disabled>	  
+	</div>
+	<div class="form-group">
+		<label for="Item-Code"><b>Item Code:</b></label>
+		<input name="item_code" id="item_code" type="text" class="form-control"  placeholder="Enter Item Code">	  
+	</div>
+
+	<div class="form-group">
+		<label for="price"><b>Price:</b></label>
+		<input name="price" id="txtprice" type="text" class="form-control"  placeholder="">	  
+	</div>
+
+	<!--script for the getting the product information that the customer wants-->
+	<script src="./js/customers/getProductsForCustomerAdd.js"></script>
+	
+	<div class="form-group">
+		<label for="Quantity"><b>Quantity Ordered:</b></label>
+		<input name="qty" id="txtqty" type="number" class="form-control" placeholder="Enter Quantity">	  
+	</div>
+
+	<div class="form-group">
+		<label for="Quantity"><b>Quantity Available:</b></label>
+		<input name="quantity" id="quantity" type="number" class="form-control" placeholder="" disabled>	  
+	</div>
+
+	<div class="form-group">
+		<label for="Tax"><b>Tax Exempt:</b></label>
+		<input name="tax_exempt" type="number" class="form-control" placeholder="Enter 0, If Not Exempt">	  
+	</div>
+	<div class="form-group">
+		<label for="taxpercent"><b>Tax Percent:</b></label>
+		<input name="taxpercent" id="txttaxpercent" type="number" class="form-control" placeholder="Enter Tax Percent" >	  
+	</div>
+	<div class="form-group">
+		<label for="totalamt"><b>Item Total:</b></label>
+		<input name="totalamt" id="txttotalamt" type="text" class="form-control" placeholder=""  >	  
+	</div>
+
+	<div class="form-group">
+		<label for="status"><b>Status:</b></label>
+			<select class="form-control" id="status" name="status">
+				<option value="" disabled selected>Make Selection</option>
+				<option value="Shipped">Shipped</option>
+			  	<option value="Received">Received</option>
+			  	<option value="Ordered">Ordered</option>
+				<option value="Delivered">Delivered</option>
+				<option value="Delivered">Cancelled</option>
+			</select>
+	</div>
+
+	<div class="form-group">
+		<label for="productid"><b>Product Id:</b></label>
+		<input name="productid" id="productid" type="number" class="form-control" placeholder="" >	  
+	</div>
+	<div class="form-group">
+		<label for="notes"><b>Notes:</b></label>
+		<textarea class="form-control" name="notes" maxlength="2500" rows="3"></textarea>
+	</div>
+</div>
+
+<!--submit button that the eventlistener is listening for to add a new customer (postCustomers2.js)-->
+<div class="form-group">
+	<button type="submit" class="btn btn-primary btn-lg btn-block">Submit Order</button>
+</div>
+</form>
+
+       
+</body>
+
+
+  <!--SCRIPTS-->
+
+  <!--Session Variable---->
+  <script type="text/javascript">
+    var value = sessionStorage.getItem("MyId");
+        if(value != "123"){
+          window.location.assign("index.html"); 
+        }
+  </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<!--Needed to connect to authentication section-->
+  <script>
+ 
+    var config = {
+      apiKey: "AIzaSyCSdMLZ7X47WoHeCFzKk4KHaD-Dim5zQso",
+    authDomain: "wine-d5f54.firebaseapp.com",
+    databaseURL: "https://wine-d5f54-default-rtdb.firebaseio.com",
+    projectId: "wine-d5f54",
+    storageBucket: "wine-d5f54.appspot.com",
+    messagingSenderId: "362621325452",
+    appId: "1:362621325452:web:204f78a701ee7ff6b52ba9",
+    measurementId: "G-J3914G9PSN"
+    };
+
+
+    firebase.initializeApp(config);
+
+  </script>
+
+<!--Needed to access the functions-->
+<script src="/js/index.js"></script>
+
+
+
+<link rel="stylesheet" href="./stylesheets/inventorystyle.css">
+
+<!-- This is for toast messages-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="/js/jquery.toaster.js"></script>
+
+
+<!--PUT API-->
+<script src="/js/putCustomers.js"></script>
+<!--POST API-->
+<script src="/js/customers/postCustomers2.js"></script>
+
+<!--Collapse Modify Inventory Script-->
+<script src="/js/collapse.js"></script>
+
+    <script>
+        document.getElementById('printButton').onclick = function() {
+            const element = document.getElementById('CustomerView');
+
+//Gather Year, Month, and Date For PDF File Name
+const fileDateInfo = new Date();
+const fileYear = fileDateInfo.getFullYear();
+const fileMonth = fileDateInfo.getMonth() + 1; //Increment One to get correct month. [0] is January
+const fileDate = fileDateInfo.getDate(); 
+            
+            // html2pdf options
+            const options = {
+                margin:       1,
+                filename:     `${fileYear}"_"${fileMonth}"_"${fileDate} CustomerOrders.pdf` ,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { dpi: 192, scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            
+            
+            html2pdf().from(element).set(options).save();
+        };
+
+        document.getElementById("OrderTicket").onclick = function ()
+        {
+            window.open('OrderTicket.html', '_blank');
+        };
+
+    </script>
+
+</body>
+</html>

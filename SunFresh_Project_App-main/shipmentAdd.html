@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Shipment Detail</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <!--Styles--->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script src="/js/shipment.js"></script>
+
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+
+</head>
+
+<body>
+
+<!--Class Pointers -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="home-button">
+          <button class="btn btn-secondary" onclick="window.location.href='index.html'">Home</button>
+        </div>
+        <div class="logout-topright">
+          <button class="btn btn-danger" onclick="logout()">Logout</button>
+        </div>
+    </div>
+</div>
+  
+  
+<div class="container">
+  <h1 class="pages-text-center">Shipment Order Screen</h1>
+  <form class="form">
+
+    <!-- Selection of Shippers Via a Dropdown Bar -->
+    <div class="form-group">
+      <label for="shipper"><b>Choose Shipper:</b></label>
+      <select class="form-control" id="status" name="shipper">
+        <option value="" disabled selected>Make Selection</option>
+        <option value="Lamanuzzi_Pantaleo">Lamanuzzi & Pantaleo</option>
+        <option value="LDCarlson">LD Carlson Company</option>
+        <option value="ConsumerFresh">Consumer Fresh Produce</option>
+        <option value="PresqueIsle">Presque Isle Wine Cellars</option>
+      </select>
+    </div>
+
+
+    
+    <div class="form-group">
+      <label for="carrier"><b>Carrier:</b></label>
+      <input type="text" class="form-control" id="carrier" placeholder="Carrier" name="carrier">
+    </div>
+
+    <!-- Brings up Calender Selection Prompt -->
+    <div class="form-group">
+      <label for="loaddate"><b>Load Date:</b></label>
+      <input type="text" class="form-control datepicker" id="loaddate" placeholder="Select Date" name="load_date">
+    </div>
+
+     <!--Brings up Calender Selection Prompt-->
+    <div class="form-group">
+      <label for="shipdate"><b>Ship Date:</b></label>
+      <input type="text" class="form-control" id="shipdate" placeholder="Select Date" name="ship_date">
+    </div>
+
+    <!--Brings up Calender Selection Prompt-->
+    <div class="form-group">
+      <label for="expecteddate"><b>Expected Date:</b></label>
+      <input type="text" class="form-control" id="expecteddate" placeholder="Select Date" name="expected_date">
+    </div>
+
+    <!--Drop Down Menu with Four Statuses-->
+    <!--Drop Down Menu with Four Statuses-->
+    <div class="form-group">
+      <label for="status"><b>Status:</b></label>
+        <select class="form-control" id="status" name="status">
+          <option value="" disabled selected>Make Selection</option>
+          <option value="Shipped">Shipped</option>
+            <option value="Recieved">Recieved</option>
+            <option value="Ordered">Ordered</option>
+          <option value="Delivered">Delivered</option>
+        </select>
+    </div>
+
+     <!--Brings up Calender Selection Prompt-->
+    <div class="form-group">
+      <label for="arrivaldate"><b>Arrival Date:</b></label>
+      <input type="text" class="form-control" id="arrivaldate" placeholder="Select Date" name="arrival_date">
+    </div>
+
+     <!--Brings up Calender Selection Prompt-->
+    <div class="form-group">
+      <label for="daterevised"><b>Date Revised:</b></label>
+      <input type="text" class="form-control" id="daterevised" placeholder="Select Date" name="date_revised">
+    </div>
+
+    <div class="form-group">
+      <label for="notes"><b>Notes:</b></label>
+      <textarea class="form-control" name="notes" maxlength="2500" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Submit Order</button>
+    </div>
+
+
+
+</form>
+</div>
+
+</body>         
+
+
+<!--SCRIPTS-->
+
+<!--Loader-->
+<div class="preloader">
+  <div class="spinner"></div>
+</div>
+
+<!--Session Variable-->
+  <script type="text/javascript">
+    var value = sessionStorage.getItem("MyId");
+        if(value != "123"){
+          window.location.assign("index.html"); 
+        }
+  </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script src="/js/secret.js"></script>
+
+  <!-- This is for toast messages-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="/js/jquery.toaster.js"></script>
+
+  
+<!--Needed to access the functions-->
+<script src="/js/index.js"></script>
+
+
+<!--Bootstrap datepicker -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+
+<script src="/js/datepicker.js"></script>    
+
+<!--POST API-->
+<script src="/js/postShipment.js"></script>
+
+</html>

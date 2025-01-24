@@ -1,0 +1,41 @@
+.container {
+  position: relative;
+}
+
+.topleft2 {
+  position: absolute;
+  top: 8px;
+  left: 2px;
+  font-size: 18px;
+}
+
+img { 
+  width: 100%;
+  height: auto;
+  opacity: 0.3;
+}
+
+.topleft3 {
+  position: absolute;
+  top: 23px;
+  left: 300px;
+  font-size: 18px;
+}
+
+.back-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 4px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addorder-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

@@ -1,0 +1,92 @@
+<html>
+<head>
+  <title>Sunfresh Wine Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+  </script>
+
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js">
+  </script>
+
+  <div id="login_div" class="main-div">
+      <center>
+        <img src="img/SFSLogo.png" class="logo" alt="ppu login" height="150" width="350">
+      </center>
+      <br>
+
+    <input type="email" placeholder="Email" id="email_field"  />
+    <input type="password" placeholder="Password" id="password_field" onkeypress="handleKeyPress(event)" />
+
+    <button onclick="login()">Login to Account</button>
+  
+    </div>
+
+    <div id="user_div" class="loggedin-div">
+      
+    
+    <div class="topright"><button onclick="logout()">Logout</button></div>
+    <H3><center><b>Sunfresh Wine Service</b></center></H3>
+    <br>
+    <button onclick="window.location.href='customerAdd.html'">Add Customer Order</button>
+    <br>
+    <button onclick="window.location.href='customerView.html'">View Customer Orders</button>
+    <br>
+    <button onclick="window.location.href='shipmentAdd.html'">Add Shipment Order</button>
+    <br>
+    <button onclick="window.location.href='shipmentView.html'">View Shipment Orders</button>
+    <br>
+    <button onclick="window.location.href='inventoryAdd.html'">Add Inventory</button>
+    <br>
+    <button onclick="window.location.href='inventoryView.html'">View All Inventory</button>
+    <br>
+    <button onclick="window.location.href='orders.html'">Orders</button>
+
+    
+
+  </div>
+
+  <script>
+    document.getElementById('updateDetails')
+    .addEventListener('click', function(){
+      toastr.success('You have successfully Checked In');
+    })
+  </script>
+
+<!--
+  <script type="module">
+    //Your web auth
+    import { firebaseConfig } from './js/auth.js';
+    //initialize firebase
+    firebase.initializeApp(firebaseConfig);
+    //firebase.analytics();
+  </script> 
+
+-->
+
+
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script src="/js/secret.js"></script>
+
+  
+  <script src="/js/index.js"></script>
+
+
+  <div class="preloader">
+		<div class="spinner"></div>
+	</div>
+
+</body>
+</html>

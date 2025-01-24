@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Shipment Orders</title>
+
+    <!--Local Stylesheets--->
+<link rel="stylesheet" href="style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="./stylesheets/style.css" />
+<link rel="stylesheet" href="./stylesheets/shipmenu.css" />
+
+<!--
+LOCAL FILES USED
+------------------
+collapse.js
+getShipment.js
+index.js
+inventorystyle.css
+jquery.toaster.js
+putShipment.js
+------------------
+-->
+
+    <style>
+        #printButton {
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+    </style>
+    <!-- html2pdf.js library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
+    <!--Bootstrap-->
+<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+
+</head>
+<body>
+
+ 
+    
+
+   
+
+    <div id="shipmentView">
+         <!--Home and Logout Buttons-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="home-button">
+      <button class="btn btn-secondary" onclick="window.location.href='index.html'">Home</button>
+    </div>
+    <div class="logout-topright">
+      <button class="btn btn-danger" onclick="logout()">Logout</button>
+    </div>
+
+
+<!--PDF Buttons-->
+    <div id = "divExport">
+      <button class="pdf-button-topright" id="ShipmentOrderTicket" type = "button" >Shipment Order List PDF</button>
+      <button class = "pdf2-button-topright" id="printButton">Download PDF</button>
+          
+      </div>
+  </div>
+</div>
+
+  <!--Table Properties-->
+<h1 class="pages-text-center">View Shipment Orders</h1>
+    <div class="container">
+        <div id="table"></div>
+          <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+          <script src="JS/getShipment.js"></script>              
+        </div>
+      </div>     
+    </div>    
+
+  <!--Modify Button-->
+    <div class="container">
+
+      <button type="button" class="collapsible"><center>Modify Shipment</center></button>
+      <div class="content">
+
+         <!--Displaying Content of the Table and the Headers-->
+      <form class="form">
+      
+      
+        <div class="form-group">
+          <label for="shipment_id"><b>ShipmentID:</b></label>
+          <input name="shipment_id" type="number" class="form-control" id="shipment_id" placeholder="Carrier" name="carrier">
+        </div>
+
+        <div class="form-group">
+          <label for="shipper"><b>Choose Shipper:</b></label>
+          <select class="form-control" id="status" name="shipper">
+            <option value="" disabled selected>Make Selection</option>
+            <option value="Lamanuzzi_Pantaleo">Lamanuzzi & Pantaleo</option>
+            <option value="LDCarlson">LD Carlson Company</option>
+            <option value="ConsumerFresh">Consumer Fresh Produce</option>
+            <option value="PresqueIsle">Presque Isle Wine Cellars</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="carrier"><b>Carrier:</b></label>
+          <input name="carrier" type="text" class="form-control" id="carrier" placeholder="Carrier" name="carrier">
+        </div>
+
+        <div class="form-group">
+          <label for="load_date"><b>Load Date:</b></label>
+          <input name="load_date" type="text" class="form-control datepicker" id="load_date" placeholder="Select Date" name="load_date">
+        </div>
+
+        <div class="form-group">
+          <label for="ship_date"><b>Ship Date:</b></label>
+          <input type="text" class="form-control" id="ship_date" placeholder="Select Date" name="ship_date">
+        </div>
+
+        <div class="form-group">
+          <label for="expected_date"><b>Expected Date:</b></label>
+          <input name="expected_date" type="text" class="form-control" id="expected_date" placeholder="Select Date" name="expected_date">
+        </div>
+
+        <div class="form-group">
+          <label for="status"><b>Status:</b></label>
+            <select class="form-control" id="status" name="status">
+              <option value="" disabled selected>Make Selection</option>
+              <option value="Shipped">Shipped</option>
+                <option value="Recieved">Recieved</option>
+                <option value="Ordered">Ordered</option>
+              <option value="Delivered">Delivered</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+          <label for="arrival_date"><b>Arrival Date:</b></label>
+          <input name="arrival_date" type="text" class="form-control" id="arrival_date" placeholder="Select Date">
+        </div>
+
+        <div class="form-group">
+          <label for="date_revised"><b>Date Revised:</b></label>
+          <input name="date_revised" type="text" class="form-control" id="date_revised" placeholder="Select Date">
+        </div>
+
+        <div class="form-group">
+          <label for="notes"><b>Notes:</b></label>
+          <textarea class="form-control" name="notes" type="text" id="notes" maxlength="2500" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Modify Shipment</button>
+        </div>
+      
+      </form>
+      </div>
+      
+             
+      </body>
+      
+      
+        <!--SCRIPTS-->
+      
+        <!--Session Variable-->
+        <script type="text/javascript">
+          var value = sessionStorage.getItem("MyId");
+              if(value != "123"){
+                window.location.assign("index.html"); 
+              }
+        </script>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+      <!--Needed to connect to authentication section-->
+        <script>
+
+          //Configuration Setup for Firebase Environment. Same as shipmentAdd.html
+          var config = {
+            apiKey: "AIzaSyCSdMLZ7X47WoHeCFzKk4KHaD-Dim5zQso",
+          authDomain: "wine-d5f54.firebaseapp.com",
+          databaseURL: "https://wine-d5f54-default-rtdb.firebaseio.com",
+          projectId: "wine-d5f54",
+          storageBucket: "wine-d5f54.appspot.com",
+          messagingSenderId: "362621325452",
+          appId: "1:362621325452:web:204f78a701ee7ff6b52ba9",
+          measurementId: "G-J3914G9PSN"
+          };
+      
+      
+          firebase.initializeApp(config);
+      
+        </script>
+      
+      <!--Needed to access the functions-->
+      <script src="/js/index.js"></script>
+      <link rel="stylesheet" href="./stylesheets/inventorystyle.css">
+      
+      <!-- This is for toast messages-->
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      <script src="/js/jquery.toaster.js"></script>
+      
+      
+      <!--PUT API-->
+      <script src="/js/putShipment.js"></script>
+      
+      <!--Collapse Modify Inventory Script-->
+      <script src="/js/collapse.js"></script>
+
+    <script>
+        document.getElementById('printButton').onclick = function() {
+            const element = document.getElementById('shipmentView');
+
+//Gather Year, Month, and Date For PDF File Name
+const fileDateInfo = new Date();
+const fileYear = fileDateInfo.getFullYear();
+const fileMonth = fileDateInfo.getMonth() + 1; //Increment One to get correct month
+const fileDate = fileDateInfo.getDate(); 
+            
+            // html2pdf options
+            const options = {
+                margin:       1,
+                filename:     `${fileYear}"_"${fileMonth}"_"${fileDate} ShipmentExports.pdf` ,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { dpi: 192, scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
+            };
+            
+            //html2pdf.js 
+            html2pdf().from(element).set(options).save();
+        };
+
+        document.getElementById("ShipmentOrderTicket").onclick = function ()
+        {
+          window.open('shipmentOrders.html', '_blank');
+        };
+    </script>
+
+    <script src="/js/secret.js"></script>
+
+</body>
+</html>

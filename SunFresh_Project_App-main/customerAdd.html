@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Add Customer Order</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+<!--Local Stylesheets-->
+<link rel="stylesheet" href="/stylesheets/style.css" />
+
+<!--Bootstrap-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+</head>
+
+<body>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="home-button">
+			<button class="btn btn-secondary" onclick="window.location.href='index.html'">Home</button>
+		</div>
+		<div class="logout-topright">
+			<button class="btn btn-danger" onclick="logout()">Logout</button>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<h1 class="pages-text-center">Customer Order Screen</h1>
+
+<form class="form">
+	<div id="cocktail"></div>
+	
+    
+    <script src="./js/customers/getOrderId.js"></script>
+	
+<!--from here on, it is the fields that are required to add a new customer order, each form group is specific to the label
+    the input is taken and saved in the form-group as either text, number, or email. this is later called on postCustomers.js-->
+	<div class="form-group">
+		<label for="orderid"><b>OrderId:</b></label>
+		<input name="orderid" id="orderid" type="text" class="form-control" placeholder="" >	  
+	</div>
+
+	<div class="form-group">
+		<label for="firstname"><b>First Name:</b></label>
+		<input name="first_name" type="text" class="form-control" placeholder="Enter First Name">	  
+	</div>
+
+	<div class="form-group">
+		<label for="lastname"><b>Last Name:</b></label>
+		<input name="last_name" type="text" class="form-control" placeholder="Enter Last Name">	  
+	</div>
+
+	<div class="form-group">
+		<label for="phone"><b>Phone Number:</b></label>
+		<input name="mobile_phone" type="number" class="form-control" placeholder="Enter Phone Number">	  
+	</div>
+
+	<div class="form-group">
+		<label for="Email"><b>Email:</b></label>
+		<input name="email" type="email" class="form-control" placeholder="Enter Email">	  
+	</div>
+
+	<div id="items"> <!--creates a seperate div for the product information. this keeps all the information about the product together within the form-->
+		<div class="form-group">
+			<label for="Item-Name"><b>Item Name:</b></label>
+			<!--allows user to choose the product name from a dropdown uses the script called in line 93.-->
+			<select name="item_name" id="dropdown" class="form-control" style="width: 200;"></select>
+			<!--<input name="item_name" type="text" class="form-control" placeholder="Enter Item Name">-->	
+			<!---->  
+		</div>
+	<div class="form-group">
+		<label for="description"><b>Description:</b></label>
+		<!--the disabled tag at the end makes the description and item code a value that can't be interacted with. It is also not submitted with the form data-->
+		<input name="description" id="description" type="text" class="form-control"  placeholder="Enter Description" disabled>	  
+	</div>
+	<div class="form-group">
+		<label for="Item-Code"><b>Item Code:</b></label>
+		<input name="item_code" id="item_code" type="text" class="form-control"  placeholder="Enter Item Code" disabled>	  
+	</div>
+
+	<div class="form-group">
+		<label for="price"><b>Price:</b></label>
+		<input name="price" id="price" type="text" class="form-control"  placeholder="">	  
+	</div>
+
+	<!--calls the script to get the product information like the name, price, and tax exemption-->
+<script src="./js/customers/getProducts.js"></script>
+	<div class="form-group">
+		<label for="Quantity"><b>Quantity Ordered:</b></label>
+		<input name="qty" id="qty" type="number" class="form-control" placeholder="Enter Quantity">	  
+	</div>
+
+	<!--shows the quantity of the product that is selected-->
+	<div class="form-group">
+		<label for="Quantity"><b>Quantity Available:</b></label>
+		<input name="quantity" id="quantity" type="number" class="form-control" placeholder="" disabled>	  
+	</div>
+
+	<div class="form-group">
+		<label for="Tax"><b>Tax Exempt:</b></label>
+		<input name="tax_exempt" type="number" class="form-control" placeholder="Enter 0, If Not Exempt">	  
+	</div>
+	<div class="form-group">
+		<label for="taxpercent"><b>Tax Percent:</b></label>
+		<input name="taxpercent" id="taxpercent" type="number" class="form-control" placeholder="Enter Tax Percent" >	  
+	</div>
+	<div class="form-group">
+		<label for="totalamt"><b>Item Total:</b></label>
+		<input name="totalamt" id="totalamt" type="number" class="form-control" placeholder=""  >	  
+	</div>
+
+	<div class="form-group">
+		<label for="status"><b>Status:</b></label>
+			<!--creates dropdown for the status that the user can manually choose from-->
+			<select class="form-control" id="status" name="status">
+				<option value="" disabled selected>Make Selection</option>
+				<option value="Shipped">Shipped</option>
+			  	<option value="Received">Received</option>
+			  	<option value="Ordered">Ordered</option>
+				<option value="Delivered">Delivered</option>
+				<option value="Delivered">Cancelled</option>
+			</select>
+	</div>
+
+	<div class="form-group">
+		<label for="productid"><b>Product Id:</b></label>
+		<input name="productid" id="productid" type="number" class="form-control" placeholder="" >	  
+	</div>
+	<div class="form-group">
+		<label for="notes"><b>Notes:</b></label>
+		<textarea class="form-control" name="notes" maxlength="2500" rows="3"></textarea>
+	</div>
+
+	</div>
+	  
+	<div class="form-group">
+		<!--This is the submit button that the eventlistener is waiting for-->
+		<button type="submit" class="btn btn-primary btn-lg btn-block">Submit Order</button>
+	</div>
+
+
+</form>
+
+</div>
+
+</body>
+
+
+<!--SCRIPTS-->
+
+
+<!--Loader Spinner-->
+<div class="preloader">
+	<div class="spinner"></div>
+</div>
+
+<!--Session Variable-->
+<script type="text/javascript">
+var value = sessionStorage.getItem("MyId");
+	if(value != "123"){
+		window.location.assign("index.html"); 
+	}
+</script>
+
+<!--Loader-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script src="/js/secret.js"></script>
+
+<!-- This is for toast messages-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="/js/jquery.toaster.js"></script>
+
+<!--Needed to access the functions-->
+<script src="/js/index.js"></script>
+
+<!--POST API-->
+<script src="/js/customers/postCustomers.js"></script>
+
+
+</html>
+

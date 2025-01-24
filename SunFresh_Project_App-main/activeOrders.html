@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <title>Active Orders</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Stylesheets-->
+    <link rel="stylesheet" href="./stylesheets/style.css">
+
+    <!--bootstrap--> 
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+
+  </head>
+  <body>
+
+    <!--holds the home and logout button-->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="home-button">
+            <button class="btn btn-secondary" onclick="window.location.href='index.html'">Home</button>
+          </div>
+          <div class="logout-topright">
+            <button class="btn btn-danger" onclick="logout()">Logout</button>
+          </div>
+        </div>
+      </div>
+
+    <h1 class="pages-text-center">View Active Orders</h1>
+
+  <div class="container">
+    <div id="table"></div>
+  </div>
+
+  <div class="container">
+    <button type="button" onclick="calculateTotalCost()">Order Total</button>
+    <p id="totalCost"></p>
+  </div>
+
+
+  <!--Session Variable-->
+  
+  <script type="text/javascript">
+    var value = sessionStorage.getItem("MyId");
+      if(value != "123"){
+        window.location.assign("index.html");
+      }
+  </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script src="/js/secret.js"></script>
+
+
+<!--This is for toast messages-->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="/js/jquery.toaster.js"></script>
+
+<script src="./js/index.js"></script>
+
+<!--script for the gridjs-->
+<script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+<script src="/js/orders/getOrders.js"></script>
+<script src="/js/orders/getOrderTotal.js"></script>
+<script>
+  //initialize the table with total cost calculation callback
+  document.addEventListener('DOMContentLoaded', () => {
+    initializeTable(calculateTotalCost());
+  })
+</script>
+
+</body>
+</html>
+
+

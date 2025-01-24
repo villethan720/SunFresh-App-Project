@@ -1,0 +1,25 @@
+/*css for the collapsible elements of the pages like modify customers or add inventory buttons*/
+  .collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+
+/*Changes background color of button when the cursor is on the button*/
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
+
+/*Hides the content until the button is clicked*/
+  .content {
+    padding: 0 8px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+  }

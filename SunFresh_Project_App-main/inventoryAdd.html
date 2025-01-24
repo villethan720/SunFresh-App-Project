@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Add Inventory</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!--Local Stylesheets--->
+<link rel="stylesheet" href="/stylesheets/style.css" />
+
+<!--Bootstrap-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+</head>
+
+
+<body>
+
+<!--end session with logout button or go to home page with home button-->
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="home-button">
+			<button class="btn btn-secondary" onclick="window.location.href='index.html'">Home</button>
+		</div>
+
+		<!--Logout Button-->
+		<div class="logout-topright">
+			<button class="btn btn-danger" onclick="logout()">Logout</button>
+		</div>
+	</div>
+</div>
+
+<div class = "divExport">
+<button class="btn btn-danger" onclick="generatePDF()" class="btn-sm btn-danger pull-right">Export to PDF</button>
+</div>
+
+<!--Export Button Will Convert .csv file-->
+<button type="button" type = "button">Export</button>
+
+<div class="container">
+	<h1 class="pages-text-center">Add Inventory</h1>
+
+	<!--form that the new inventory is saved to-->
+	<form class="form">
+	
+	<!--Product Name TextBox-->
+	<div class="form-group">
+		<label for="Product"><b>Product Name:</b></label>
+		<input name="product" type="text" class="form-control" placeholder="Enter Product Name">
+	</div>
+
+	<!--Description Textbox-->
+	<div class="form-group">
+		<label for="Description"><b>Description:</b></label>
+		<input name="description" type="text" class="form-control"  placeholder="Enter Description">
+	</div>
+
+	<!--Quantity TextBox with arrows incrementing to 0.01-->
+	<div class="form-group">
+		<label for="Quantity"><b>Quantity Ordered:</b></label>
+		<input name="quantity" type="number" class="form-control" placeholder="Enter quantity">
+	</div>
+
+	<!--Product Code Textbox-->
+	<div class="form-group">
+		<label for="ProductCode"><b>Product Code:</b></label>
+		<input name="productcode" type="text" class="form-control" placeholder="Enter Product Code">
+	</div>
+
+	<!--Price TextBox with arrows incrementing to 0.01-->
+	<div class="form-group">
+		<label for="price"><b>Price:</b></label>
+		<input name="price" type="number" class="form-control" step="0.01" placeholder="Enter Price">
+	</div>
+
+	  <!--Submit that the eventlistener is listening for (postInventory.js)-->
+	  <div class="form-group">
+		<button type="submit" class="btn btn-primary btn-lg btn-block">Submit Order</button>
+	  </div>
+
+	</form>
+
+</body>
+
+<!--SCRIPTS-->
+
+<!--Loader-->
+<div class="preloader">
+	<div class="spinner"></div>
+</div>
+
+  <!--Session Variable-->
+<script type="text/javascript">
+var value = sessionStorage.getItem("MyId");
+	if(value != "123"){
+		window.location.assign("index.html"); 
+	}
+</script>
+
+<!--Cloudflare and Firbase API scripts-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script src="/js/secret.js"></script>
+
+<!-- This is for toast messages-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="/js/jquery.toaster.js"></script>
+
+<!--Needed to access the functions-->
+<script src="/js/index.js"></script>
+
+<!--POST API-->
+<script src="/js/postInventory.js"></script>

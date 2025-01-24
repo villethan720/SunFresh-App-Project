@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipment Orders</title>
+
+    <link rel="stylesheet" href="orderListStyle.css" type="text/css" media="all" />
+
+    <style>
+        #printButton {
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    <!-- html2pdf.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+</head>
+<body>
+
+  <!-- PDF Button-->
+    <button id="printButton">Download PDF</button>
+
+    <div id="contentToPrint">
+        <div>
+            <div class="py-4">
+              <div class="px-14 py-6">
+
+                <!-- Company Info-->
+                <center>
+                <h1 class = "header">SunFresh Food Service Inc.</h1>
+              </center>
+        
+              <p class = "bold">Phone Number: 412-391-7532</p>
+              <p class = "text-right bold ">Fax Number: 412-391-7995</p>
+        
+              <!-- Header-->
+              <center>
+              <h2 class = "header">Shipment Orders</h2>
+            </center>
+        
+             
+         
+            <p class="text-left"> Date: <script src="./js/dates.js"></script>  
+            <br>
+            <center>
+            Pick-Up: Ticket Date: Ticket No: G245M   P.O. #</p>
+        </center>
+        
+<!-- Email Info -->
+
+            <p class="text-left">Name: Seaman, Jeffrey</p>
+            <p class="text-left">Address: email@gmail.com</p>
+            <p class="text-left">Cell Phone: 412-555-5555</p>
+         
+        
+                <table class="w-full border-collapse border-spacing-0">
+                  <tbody>
+                    <tr>
+                      <td class="w-full align-top">
+                        <div>
+                        </div>
+                      </td>
+        
+                      <td class="align-top">
+                        <div class="text-sm">
+                          <table class="border-collapse border-spacing-0">
+                            <tbody>
+                              <tr>
+                                </td>
+                                <td class="pl-4">
+                                  <div>
+        
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+        
+                <!-- Table Header-->
+              <div class="px-14 py-10 text-sm text-neutral-700">
+                <table class="w-full border-collapse border-spacing-0">
+                  <thead>
+                    <tr>
+                      <td class="border-b-2 border-main pb-3 pl-3 font-bold text-main">Shipment ID #</td>
+                      <td class="border-b-2 border-main pb-3 pl-2 font-bold text-main">Shipper</td>
+                      <td class="border-b-2 border-main pb-3 pl-2 text-right font-bold text-main">Carrier</td>
+                      <td class="border-b-2 border-main pb-3 pl-2 text-center font-bold text-main">Load Date</td>
+                      <td class="border-b-2 border-main pb-3 pl-2 text-center font-bold text-main">Ship Date</td>
+                      <td class="border-b-2 border-main pb-3 pl-2 text-right font-bold text-main">Expected Date</td>
+                      <td class="border-b-2 border-main pb-3 pl-2 text-right font-bold text-main">Status</td>
+                      <td class="border-b-2 border-main pb-3 pl-2 text-right font-bold text-main">Arrival Date</td>
+                      <td class="border-b-2 border-main pb-3 pl-2 text-right font-bold text-main">Date Revised</td>
+                      <td class="border-b-2 border-main pb-3 pl-2 text-right font-bold text-main">Notes</td>
+                      
+        
+                    </tr>
+                  </thead>
+
+                  <!-- Contents -->
+                  <tbody>
+                    <tr>
+                      <td class="border-b py-3 pl-3">503</td>
+                      <td class="border-b py-3 pl-2">Lamanuzzi_Pantaleo</td>
+                      <td class="border-b py-3 pl-2 text-right">Tyler CC</td>
+                      <td class="border-b py-3 pl-2 text-center">04-24-2023</td>
+                      <td class="border-b py-3 pl-2 text-center">04-24-2023</td>
+                      <td class="border-b py-3 pl-2 pr-3 text-right">04-28-2023</td>
+                      <td class="border-b py-3 pl-2 pr-3 text-right">Ordered</td>
+                      <td class="border-b py-3 pl-2 pr-3 text-right">04-29-2023</td>
+                      <td class="border-b py-3 pl-2 pr-3 text-right">04-29-2023</td>
+                      <td class="border-b py-3 pl-2 pr-3 text-right">Testing FF</td>
+                    </tr>
+                    <tr>
+                        <td class="border-b py-3 pl-3">502</td>
+                        <td class="border-b py-3 pl-2">ConsumerFresh</td>
+                        <td class="border-b py-3 pl-2 text-right">Tyler C</td>
+                        <td class="border-b py-3 pl-2 text-center">04-24-2023</td>
+                        <td class="border-b py-3 pl-2 text-center">04-25-2023</td>
+                        <td class="border-b py-3 pl-2 pr-3 text-right">05-23-2023</td>
+                        <td class="border-b py-3 pl-2 pr-3 text-right">Ordered</td>
+                        <td class="border-b py-3 pl-2 pr-3 text-right">06-27-2023</td>
+                        <td class="border-b py-3 pl-2 pr-3 text-right">07-28-2023</td>
+                        <td class="border-b py-3 pl-2 pr-3 text-right">Tyler Testing F</td>
+                    </tr>
+        
+        
+                    
+                    <tr>
+                      <td colspan="7">
+        
+                        <table class="w-full border-collapse border-spacing-0">
+                          <tbody>
+                            <tr>
+                              <td class="w-full"></td>
+                              <td>
+                                <table class="w-full border-collapse border-spacing-0">
+                                  <tbody>
+                                    <tr>
+        
+                                    </tr>
+                                    <tr>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+        </div>
+
+    <script>
+        document.getElementById('printButton').onclick = function() {
+            const element = document.getElementById('contentToPrint');
+            
+            //html2pdf options
+            const options = {
+                margin:       1,
+                filename:     `${fileYear}"_"${fileMonth}"_"${fileDate} "ShipmentOrders"`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { dpi: 192, scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            
+            // Use html2pdf.js to download the content as a PDF
+            html2pdf().from(element).set(options).save();
+        };
+    </script>
+
+    <script src="/js/secret.js"></script>
+
+</body>
+</html>
